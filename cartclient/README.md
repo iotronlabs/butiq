@@ -1,6 +1,6 @@
 # cartclient
 
-> E-Commerce
+> My gnarly Nuxt.js project
 
 ## Build Setup
 
