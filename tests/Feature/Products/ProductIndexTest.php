@@ -1,4 +1,4 @@
- <?php
+<?php
 
 namespace Tests\Feature\Products;
 
@@ -14,9 +14,9 @@ class ProductIndexTest extends TestCase
 
 
         $product = factory(Product::class)->create();
-
-        $this->json('GET','api\products')
-        ->assertJsonFragment([
+ 
+        $this->json('GET','api/products')
+             ->assertJsonFragment([
             'id' => $product->id
         ]);
     }
@@ -27,7 +27,7 @@ class ProductIndexTest extends TestCase
 
        
 
-        $this->json('GET','api\products')
+        $this->json('GET','api/products')
         ->assertJsonStructure([
             'meta',
         ]);
