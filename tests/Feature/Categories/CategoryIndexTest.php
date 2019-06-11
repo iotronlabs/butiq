@@ -16,9 +16,10 @@ class CategoryIndexTest extends TestCase
     public function test_it_return_a_collection_of_categories()
 
     {
-       $categories =  factory(Category::class,2)->create();
-       $response = $this->json('GET','api\categories');
-        $categories->each(function($category) use ($response){
+       $category =  factory(Category::class,2)->create();
+       $response = $this->json('GET','api/categories');
+       $category->each(function($category) use ($response){
+        
         $response->assertJson([
             'slug' => $category->slug
         ]);
@@ -37,7 +38,7 @@ class CategoryIndexTest extends TestCase
 
         );
 
-       $this->json('GET','api\categories')
+       $this->json('GET','api/categories')
        ->assertJsonCount(1,'data');
     }
 
@@ -53,7 +54,7 @@ class CategoryIndexTest extends TestCase
 
        ]);
 
-       $this->json('GET','api\categories')
+       $this->json('GET','api/categories')
        ->assertSeeInOrder([
         $anothercategory->slug, $category->slug
        ]);
