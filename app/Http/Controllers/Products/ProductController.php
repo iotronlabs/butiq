@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Resources\ProductIndexResources;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Scoping\Scopes\CategoryScope;
 
 class ProductController extends Controller
 {
    public function index()
    {
 
-   	$product =  Product::paginate(10);
+   	$product =  Product::withScopes($this->scopes())->paginate(10);
 
 	return ProductIndexResources::collection($product);
 
@@ -21,5 +22,15 @@ class ProductController extends Controller
    {
 
    		return new  ProductIndexResources($product);
+   }
+
+    protected function scopes()
+   {
+
+   	 return [
+
+       'category' => new CategoryScope()
+
+   	 ];
    }
 }
