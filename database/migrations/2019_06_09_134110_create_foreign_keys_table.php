@@ -24,7 +24,26 @@ class CreateForeignKeysTable extends Migration
                   ->on('products')
                   ->onDelete('cascade');
 
-          });        
+          });
+
+          Schema::table('product_variations', function (Blueprint $table)
+         {
+           $table->foreign('product_id')
+                 ->references('id')
+                 ->on('products');
+
+
+          }); 
+          Schema::table('product_variations', function (Blueprint $table)
+         {
+           $table->foreign('product_variation_type_id')
+                 ->references('id')
+                 ->on('product_variation_types');
+
+
+          }); 
+
+
     }
 
     /**

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Products;
 
-use Illuminate\Http\Request;
-use App\Http\Resources\ProductIndexResources;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductIndexResources;
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Scoping\Scopes\CategoryScope;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductController extends Controller
    public function show(Product $product)
    {
 
-   		return new  ProductIndexResources($product);
+   		return new  ProductResource($product);
    }
 
     protected function scopes()

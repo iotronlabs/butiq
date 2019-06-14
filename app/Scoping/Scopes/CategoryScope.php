@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Scoping\Scopes;
+
 use Illuminate\Database\Eloquent\Builder;
 use App\Scoping\Contracts\Scope;
 
@@ -19,4 +20,5 @@ class CategoryScope implements Scope
        }); 
 
 	}
+
 }

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\ProductIndexResources;
-
+use App\Models\Product;
 class ProductIndexResources extends JsonResource
 {
     /**
@@ -20,7 +20,9 @@ class ProductIndexResources extends JsonResource
         'id' => $this->id,
         'name' => $this->name,
         'slug' =>$this->slug,
+        'price' => $this->FormattedPrice,
         'description' =>$this->description,
+
         ]  ;
     }
 }
