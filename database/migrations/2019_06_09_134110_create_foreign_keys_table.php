@@ -34,14 +34,18 @@ class CreateForeignKeysTable extends Migration
 
 
           }); 
-          Schema::table('product_variations', function (Blueprint $table)
+          Schema::table('stocks', function (Blueprint $table)
          {
-           $table->foreign('product_variation_type_id')
+           $table->foreign('product_variation_id')
                  ->references('id')
-                 ->on('product_variation_types');
+                 ->on('product_variations');
 
 
-          }); 
+          });
+
+          
+          
+          
 
 
     }

@@ -3,19 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
-use App\Scoping\Scoper;
+
 use App\Models\Category;
 use App\Models\ProductVariation;
 use App\Models\Traits\CanBeScoped;
-use Money\Currencies\ISOCurrencies;
-use Money\Currency;
-use Money\Formatter\IntlMoneyFormatter;
-use NumberFormatter;
+
+use App\Models\Traits\HasPrice;
+
 class Product extends Model
 {
 
-  use CanBeScoped;
+  use CanBeScoped, HasPrice;
 
    public function getRouteKeyName()
    {

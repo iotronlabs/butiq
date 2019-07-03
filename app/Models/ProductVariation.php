@@ -5,9 +5,27 @@ namespace App\Models;
 //use App\Models\ProductVariation;
 use App\Models\ProductVariationType;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\HasPrice;
 
 class ProductVariation extends Model
-{
+{  
+   use HasPrice;
+
+   // public function getPriceAttribute($value)
+   //  {
+   //      if($value === null)
+   //      {
+   //         return $this->product->price;
+   //      }
+        
+   //  }
+    public function priceVaries()
+    {
+        return $this->price->amount()!== $this->product->price->amount();
+        
+    }
+   
+
    public function type()
    {
    	return $this->hasOne(ProductVariationType::class, 'id', 'product_variation_type_id');
@@ -16,6 +34,12 @@ class ProductVariation extends Model
    public function product()
    {
    	return $this->belongsTo(Product::class);
+   }
+
+   public function stocks()
+   {
+      return $this->hasMany(Stock::class);
+
    }
    
 
