@@ -18,6 +18,32 @@ class CreateCategoryProductTable extends Migration
             $table->integer('product_id')->unsigned()->index();
 
         });
+        
+        Schema::table('category_product', function (Blueprint $table)
+         {
+           $table->foreign('category_id')
+                 ->references('id')
+                 ->on('categories');
+
+        //     $table->foreign('product_id')
+        //           ->references('id')
+        //           ->on('products')
+        //           ->onDelete('cascade');
+
+           });
+
+        Schema::table('category_product', function (Blueprint $table)
+         {
+        //    $table->foreign('category_id')
+        //          ->references('id')
+        //          ->on('categories');
+
+            $table->foreign('product_id')
+                  ->references('id')
+                  ->on('products')
+                  ->onDelete('cascade');
+
+           });
     }
 
     /**

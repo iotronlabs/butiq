@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Stock;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class \stock extends Model
+class Order extends Model
 {
     //
 }
