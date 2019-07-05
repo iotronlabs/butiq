@@ -1,20 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class CreateProductVariationStockView extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    
     public function up()
     {
-        DB::statement("
+       DB::statement("
             CREATE VIEW product_variation_stock_view AS
             SELECT
                 product_variations.product_id AS product_id,
@@ -43,13 +38,9 @@ class CreateProductVariationStockView extends Migration
         ");
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    
     public function down()
     {
-        DB::statement("DROP VIEW IF EXISTS product_variation_stock_view");
+        DB::statement('DROP VIEW IF EXISTS product_variation_stock_view');
     }
 }

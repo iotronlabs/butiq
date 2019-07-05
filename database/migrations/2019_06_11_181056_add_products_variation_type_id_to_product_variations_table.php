@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Console\Scheduling\Schedule;
 
-class AddProductsVariationTypeIdToProdctVariationsTable extends Migration
+class AddProductsVariationTypeIdToProductVariationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,6 +18,11 @@ class AddProductsVariationTypeIdToProdctVariationsTable extends Migration
             $table->integer('product_variation_type_id')->unsigned()->index();
 
 
+        });
+
+        Schema::table('product_variations',function(Blueprint $table)
+        {
+             $table->foreign('product_variation_type_id')->references('id')->on('product_variation_types');
         });
 
         

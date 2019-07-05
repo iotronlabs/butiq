@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
 use App\Models\Category;
 use App\Models\ProductVariation;
 use App\Models\Traits\CanBeScoped;
-
 use App\Models\Traits\HasPrice;
+use App\Models\stockCount;
+use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
@@ -21,7 +20,24 @@ class Product extends Model
    		return 'slug';
    }
 
-   
+   public function stockCount()
+   {
+     return $this->variations->sum(function ($variation)
+     {
+
+        return $variation->stockCount();
+
+
+     });
+
+   }
+ public function InStock()
+    {
+        return (bool) $this->stockCount()>0;
+
+    }
+
+
 
 
    public function categories()

@@ -1,9 +1,13 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\ProductVariation;
+use App\Models\ProductVariationType;
 use App\User;
-use Illuminate\Support\Str;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +29,67 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+
+$factory->define(Category::class, function (Faker $faker) {
+	$name = $faker->word;
+
+    return [
+        'name' => $name,
+        'slug' => $name,
+        'parent_id' => $faker->numberBetween(1,App\Models\Category::count()),       
+    ];
+
+});
+
+
+$factory->define(Product::class, function (Faker $faker) {
+	$name = $faker->unique()->word;
+
+    return [
+        'name' => $name,
+        'slug' => $name,
+        'price' => $faker->randomNumber, 
+        'description' => $faker->sentence,      
+    ];
+
+});
+
+
+$factory->define(ProductVariationType::class, function (Faker $faker) {
+	$name = $faker->unique()->word;
+
+    return [
+        'name' => $name,
+        // 'slug' => $name,
+        // 'price' => $faker->randomNumber, 
+        // 'description' => $faker->sentence,      
+    ];
+
+});
+
+
+$factory->define(ProductVariation::class, function (Faker $faker) {
+	$name = $faker->unique()->word;
+
+    return [
+        'name' => $name,
+        'price'>$faker->randomNumber(0,1200);
+        'product_id'=> function(){
+        	       return factory('App\Models\Product')->create()->id;
+        },
+        'product_variation_type_id' => function(){
+        	return factory('App\Models\ProductVariationType')->create()->id;
+
+        },
+ 
+        // 'slug' => $name,
+        // 'price' => $faker->randomNumber, 
+        // 'description' => $faker->sentence,      
+    ];
+
+});
+
+
+
+

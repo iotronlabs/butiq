@@ -14,6 +14,7 @@ class CreateProductVariationOrder extends Migration
     public function up()
     {
         Schema::create('product_variation_order', function (Blueprint $table) {
+            // $table->increments('id');
             $table->integer('order_id')->unsigned()->index();
             $table->integer('product_variation_id')->unsigned()->index();
             $table->integer('quantity')->unsigned();
