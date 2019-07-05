@@ -69,27 +69,5 @@ $factory->define(ProductVariationType::class, function (Faker $faker) {
 });
 
 
-$factory->define(ProductVariation::class, function (Faker $faker) {
-	$name = $faker->unique()->word;
-
-    return [
-        'name' => $name,
-        'price'>$faker->randomNumber(0,1200);
-        'product_id'=> function(){
-        	       return factory('App\Models\Product')->create()->id;
-        },
-        'product_variation_type_id' => function(){
-        	return factory('App\Models\ProductVariationType')->create()->id;
-
-        },
- 
-        // 'slug' => $name,
-        // 'price' => $faker->randomNumber, 
-        // 'description' => $faker->sentence,      
-    ];
-
-});
-
-
 
 

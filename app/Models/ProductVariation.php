@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Cart\Money;
 use App\Models\Collections\ProductVariationCollection;
 use App\Models\Product;
-use App\Models\ProductVariation;
+// use App\Models\ProductVariation;
 use App\Models\ProductVariationType;
 use App\Models\Traits\HasPrice;
 use Illuminate\Database\Eloquent\Model;
