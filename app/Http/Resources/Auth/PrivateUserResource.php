@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Auth;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -10,9 +10,14 @@ class PrivateUserResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'email' => $this->email,
-            'name' => $this->name
+            
+        'name' => $this->name,
+        'id' => $this->id,
+        'email' => $this->email,
+
+
+
+
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-
+use Illuminate\Http\Request;
 
 Route::resource('category','Categories\CategoryController');
 
@@ -9,7 +9,7 @@ Route::resource('products','Products\ProductController');
 
 
 Route::group(['prefix' => 'auth'], function () {
-    Route::post('register', 'Auth\RegisterAuthController@register');
-    Route::post('login', 'Auth\LoginAuthController@action');
+    Route::post('register', 'Auth\RegisterController@action');
+    Route::post('login', 'Auth\LoginController@action');
     Route::get('me', 'Auth\MeController@action');
 });

@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\ProductIndexResources;
+// use App\Http\Resources\ProductIndexResources;
 use App\Models\Product;
 class ProductIndexResources extends JsonResource
 {

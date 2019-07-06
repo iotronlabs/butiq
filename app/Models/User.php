@@ -11,14 +11,11 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
+    
+    protected $guarded =[
+        ];
+
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password', 'gateway_customer_id'
-    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -38,21 +35,22 @@ class User extends Authenticatable implements JWTSubject
         });
     }
 
-    /**
-     * [getJWTIdentifier description]
-     * @return [type] [description]
-     */
+   
+    
     public function getJWTIdentifier()
     {
-        return $this->id;
+      return $this->getkey();
     }
-
-    /**
-     * [getJWTCustomClaims description]
-     * @return [type] [description]
-     */
     public function getJWTCustomClaims()
     {
-        return [];
+      return [];
+
+    }
+
+    public function cart()
+    {
+        return $this->belongsToMany(ProductVariation::class)
+            ->withPivot(['quantity']);
+            
     }
 }
