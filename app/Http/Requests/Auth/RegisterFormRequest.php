@@ -33,7 +33,8 @@ class RegisterFormRequest extends FormRequest
     {
         return [
             'password.required' => 'Min 8 letter required',
-
+            'email.required' => 'email required hai bhosdiwale',
+                                            
         ];
     }
 }

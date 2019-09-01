@@ -15,9 +15,6 @@ class PrivateUserResource extends JsonResource
         'id' => $this->id,
         'email' => $this->email,
 
-
-
-
         ];
     }
 }
